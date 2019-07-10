@@ -1,0 +1,126 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-top: 1em;
+    background-color: #775f79
+}
+
+section.board {
+    margin: 1rem auto;
+}
+
+section[class*="row"] {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+}
+
+div[class*="box"] {
+    width: 200px;
+    height: 200px;
+    background-color: #c8c5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 10rem;
+    font-weight: 900;
+    
+}
+
+.X {
+    color: #4db1e4;
+    text-shadow: #114f6d 1px 2px 5px;
+
+}
+
+.O {
+    color: #e95f79;
+    text-shadow: #114f6d 1px 2px 5px;
+}
+
+
+#box-0-0, #box-0-1, #box-1-0, #box-1-1 {
+    border: none;
+    border-right: 1rem solid #fbd052;
+    border-bottom: 1rem solid #fbd052;
+}
+
+#box-0-2, #box-1-2 {
+    border: none;
+    border-bottom: 1rem solid #fbd052;
+}
+#box-2-0, #box-2-1 {
+    border: none;
+    border-right: 1rem solid #fbd052;
+}
+
+#box-0-0 {
+    border-radius: 15px 0 0 0;
+}
+
+#box-0-2 {
+    border-radius: 0 15px 0 0;
+}
+
+#box-2-0 {
+    border-radius: 0 0 0 15px;
+}
+
+#box-2-2 {
+    border-radius: 0 0 15px;
+}
+
+
+header {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
+
+h1 {
+    color: white;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 8rem;
+    margin: 1rem auto;
+    text-shadow: black 1px 1px 2px;
+    
+}
+
+h2 {
+    margin: 1rem auto;
+    font-family: 'Viga', sans-serif;
+    font-size: 4rem;
+    color: #fbd052;
+    text-align: center;
+    background-color: #3f385a;
+    width: 80%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+
+}
+.reset {
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border-color: #9b7b1d;
+    border-width: 0 1px 1px 0;
+    border-radius: 10px;
+    background-color: #fbd052;
+    color: white;
+    font-family: 'Viga', sans-serif;
+}
