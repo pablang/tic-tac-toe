@@ -3,19 +3,89 @@ body {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
+    font-size: 12px;
+
     
 }
+
+header.begin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin: 0 auto;
+    width: 25rem;
+    height: 3rem;
+    font-family: 'Viga', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgb(120, 120, 120);
+    border-radius: 5px;
+    border-style: none;
+}
+
+.hide {
+    display: none;
+}
+
+.start {
+    /* width: 25rem;
+    height: 5rem; */
+    margin: 0 25%;
+    position: relative;
+    padding: 0.5rem 2rem;
+    border-color: #9b7b1d;
+    border-width: 0 1px 1px 0;
+    border-radius: 10px;
+    background-color: #fbd052;
+    color: white;
+    font-family: 'Viga', sans-serif;
+    font-size: 2rem;
+}
+
+.ok {
+    margin: 0 0.5rem;
+    padding: 0.5rem 2rem;
+    border-color:  #0c4d6d;
+    border-width: 0 1px 1px 0;
+    border-radius: 10px;
+    background-color: #4db1e4;
+    color: white;
+    font-family: 'Viga', sans-serif;
+    font-size: 2rem;
+}
+
 
 main {
     display: flex;
     flex-direction: column;
     width: 80%;
     margin-top: 1em;
-    background-color: #775f79
+    background: -webkit-linear-gradient(top, #3f385a 0%,#c3a9cc 100%,#a496aa 100%);
+    background: linear-gradient(to bottom, #3f385a 0%,#c3a9cc 100%,#a496aa 100%);
+}
+
+.middle {
+    display: flex;
+    flex-direction: row;
+    align-content: baseline;
+}
+
+img {
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto;
+    padding: 3rem;
 }
 
 section.board {
     margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center;
 }
 
 section[class*="row"] {
@@ -23,25 +93,47 @@ section[class*="row"] {
     flex-direction: row;
     margin: auto;
     justify-content: center;
+    width: 100%;
+
 }
 
-div[class*="box"] {
-    width: 200px;
-    height: 200px;
+div.box { /*the box conatining the icon */
+    font-size: 16px;
+    width: 10em;
+    height: 10em;
     background-color: #c8c5e0;
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+div[id*="box"] { /*space where mark appears */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Permanent Marker', cursive;
-    font-size: 10rem;
+    font-size: 10em;
     font-weight: 900;
-    
+
+}
+.rounds {
+    display: flex;
+    flex-direction: row;
+    font-family: "Viga", sans-serif;
+    font-size: 2rem;
+}
+
+.round, .number {
+    margin: 0.5rem auto;
+    color: #e85e79;
 }
 
 .X {
     color: #4db1e4;
     text-shadow: #114f6d 1px 2px 5px;
-
 }
 
 .O {
@@ -49,69 +141,147 @@ div[class*="box"] {
     text-shadow: #114f6d 1px 2px 5px;
 }
 
-
-#box-0-0, #box-0-1, #box-1-0, #box-1-1 {
-    border: none;
+.box1, .box2, .box4, .box5 {
     border-right: 1rem solid #fbd052;
     border-bottom: 1rem solid #fbd052;
 }
 
-#box-0-2, #box-1-2 {
+.box3, .box6 {
     border: none;
     border-bottom: 1rem solid #fbd052;
 }
-#box-2-0, #box-2-1 {
+
+.box7, .box8 {
     border: none;
     border-right: 1rem solid #fbd052;
 }
-
-#box-0-0 {
-    border-radius: 15px 0 0 0;
-}
-
-#box-0-2 {
-    border-radius: 0 15px 0 0;
-}
-
-#box-2-0 {
-    border-radius: 0 0 0 15px;
-}
-
-#box-2-2 {
-    border-radius: 0 0 15px;
-}
-
 
 header {
     display: flex;
     justify-content: center;
     margin: auto;
+    text-align: center;
+    flex-direction: column;
 
 }
 
 h1 {
     color: white;
     font-family: 'Luckiest Guy', cursive;
-    font-size: 8rem;
+    font-size: 8em;
     margin: 1rem auto;
     text-shadow: black 1px 1px 2px;
     
 }
 
 h2 {
-    margin: 1rem auto;
+    margin: 0 auto;
     font-family: 'Viga', sans-serif;
-    font-size: 4rem;
+    font-size: 2rem;
     color: #fbd052;
     text-align: center;
-    background-color: #3f385a;
-    width: 80%;
+    /* width: 80%; */
+}
+
+
+
+.slide-in-left {
+
+	-webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-duration: 0.4s;
+    transition-timing-function: ease-in;
+    
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+.win {
+    font-size: 4em;
+    width: 75%;
+    margin: 0 auto;
+
+}
+
+.pulsate-fwd {
+	-webkit-animation: pulsate-fwd 0.5s ease-in-out infinite both;
+            animation: pulsate-fwd 0.5s ease-in-out infinite both;
+            animation-iteration-count: 5;
+}
+@-webkit-keyframes pulsate-fwd {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes pulsate-fwd {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    margin: 3rem;
+    margin: 1rem auto;
 
 }
 .reset {
@@ -123,4 +293,144 @@ h2 {
     background-color: #fbd052;
     color: white;
     font-family: 'Viga', sans-serif;
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 100%;
+    } 
+
+    header {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        text-align: center;
+    
+    }
+    
+    h1 {
+        color: white;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 6rem;
+        margin: 1rem auto;
+        text-shadow: black 1px 1px 2px;
+        
+    }
+    
+    h2 {
+        margin: 1rem auto;
+        font-family: 'Viga', sans-serif;
+        font-size: 2em;
+        color: #fbd052;
+        text-align: center;
+        background-color: #3f385a;
+        /* width: 80%; */
+    }
+    section.board {
+        font-size: 16px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: center;
+    }
+    
+    section[class*="row"] {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        justify-content: center;
+        width: 100%;
+    
+    }
+    
+    section div { /*the box conatining the icon */
+        width: 5em;
+        height: 5em;
+        background-color: #c8c5e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    span {
+        width: 5em;
+        height: 5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 2rem;
+        font-weight: 900;
+    }
+}  
+
+@media (max-width: 350px) {
+    main {
+        width: 100%;
+    } 
+
+    header {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        text-align: center;
+    
+    }
+    
+    h1 {
+        color: white;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 1em;
+        margin: 0.5em auto;
+        text-shadow: black 1px 1px 2px;
+        
+    }
+    
+    h2 {
+        margin: 0.5em auto;
+        font-family: 'Viga', sans-serif;
+        font-size: 0.5em;
+        color: #fbd052;
+        text-align: center;
+        background-color: #3f385a;
+        width: 80%;
+    }
+    section.board {
+        font-size: 12px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        justify-content: center;
+    }
+    
+    section[class*="row"] {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        justify-content: center;
+        width: 100%;
+    
+    }
+    
+    section div { /*the box conatining the icon */
+        width: 2em;
+        height: 2em;
+        background-color: #c8c5e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    span {
+        width: 6em;
+        height: 6em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 8rem;
+        font-weight: 900;
+    }
 }

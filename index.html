@@ -12,24 +12,40 @@
     <main>
         <header>
             <h1>TIC TAC TOE</h1>
+            <section class="rounds">
+                <h3 class="round">ROUND <span class="number">1</span> </h3>
+            </section>
         </header>
-        <h2 class="alerts"></h2>
-        <section class="board">
-            <section class="first-row">
-                <div class="box-1" id="box-0-0"></div>
-                <div class="box-2" id="box-0-1"></div>
-                <div class="box-3" id="box-0-2"></div>
+        <header class="begin">
+            <h2 class="alerts hide"></h2>
+            <form action="">
+                <input type="text" class="player1 hide" default="Player 1" placeholder="Enter player one name...">
+                <input type="text" class="player2 hide" default ="Player 2" placeholder="Enter player two name...">
+                <button type="button" class="ok hide">OK</button>
+            </form>
+            <button class="start">START</button>
+        </header>
+        <section class="middle">
+            <img src="Duke.png" alt="">
+            <section class="board">
+                <section class="first-row">
+                    <div class="box box1"><div id="box-0-0"></div></div>
+                    <div class="box box2"><div id="box-0-1"></div></div>
+                    <div class="box box3"><div id="box-0-2"></div></div>
+                </section>
+
+                <section class="second-row">
+                    <div class="box box4" ><div id="box-1-0"></div></div>
+                    <div class="box box5" ><div id="box-1-1"></div></div>
+                    <div class="box box6" ><div id="box-1-2"></div></div>
+                </section>
+                <section class="third-row">
+                    <div class="box box7"><div id="box-2-0"></div></div>
+                    <div class="box box8"><div id="box-2-1"></div></div>
+                    <div class="box box9"><div id="box-2-2"></div></div>
+                </section>
             </section>
-            <section class="second-row">
-                <div class="box-1" id="box-1-0"></div>
-                <div class="box-2" id="box-1-1"></div>
-                <div class="box-3" id="box-1-2"></div>
-            </section>
-            <section class="third-row">
-                <div class="box-1" id="box-2-0"></div>
-                <div class="box-2" id="box-2-1"></div>
-                <div class="box-3" id="box-2-2"></div>
-            </section>
+            <img src="Valentina.png" alt="">
         </section>
         <div class="buttons">
             <button class="reset">RESET</button>
