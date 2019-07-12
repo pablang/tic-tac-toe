@@ -21,6 +21,7 @@ var okBtn = document.querySelector(".ok")
 var playerOneInputBox = document.querySelector(".player1")
 var playerTwoInputBox = document.querySelector(".player2")
 var roundDisplay = document.querySelector('#number')
+var playerOneAvatar = document.querySelector("img#avatar-1")
 var playerOneName = ""
 var playerTwoName = ""
 var icon = "O";
@@ -200,7 +201,11 @@ var resetGame = function () {
 }
 
 var savePlayerOneName = function (){
+
     if (playerOneName ===""){
+        if (playerOneInputBox.value === "Frankie") {
+            playerOneAvatar.src = "Frankie.png"
+        }
         playerOneName = playerOneInputBox.value;
         playerOneInputBox.classList.add('hide');
         playerTwoInputBox.classList.remove("hide");

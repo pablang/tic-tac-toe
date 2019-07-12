@@ -71,6 +71,7 @@ main {
     display: flex;
     flex-direction: row;
     align-content: baseline;
+    justify-content: space-between;
 }
 
 img {
