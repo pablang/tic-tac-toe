@@ -1,13 +1,13 @@
 
 
-var ROWS = 3
-var COLS = 3
+var maxRows = 3
+var maxColumns = 3
 
 var board = [];
 
-for (var i = 0; i<COLS; i++) {
+for (var i = 0; i<maxColumns; i++) {
     board.push([])
-    for (var j=0; j<ROWS; j++) {
+    for (var j=0; j<maxRows; j++) {
         board[i].push(false)
     }
 }
@@ -20,23 +20,22 @@ var startBtn = document.querySelector(".start")
 var okBtn = document.querySelector(".ok")
 var playerOneInputBox = document.querySelector(".player1")
 var playerTwoInputBox = document.querySelector(".player2")
-var roundDisplay = document.querySelector('#number')
+var roundDisplay = document.querySelector('span.number')
 var playerOneAvatar = document.querySelector("img#avatar-1")
+var playerOneScoreDisplay = document.querySelector(".player1 .wins")
+var playerTwoScoreDisplay = document.querySelector(".player2 .wins")
 var playerOneName = ""
 var playerTwoName = ""
 var icon = "O";
 var gameOver = false;
-var gamesPlayed = 1;
-var playsFirst = playerOneName //plays an X
+var hasWon;
+var isDraw = false;
+var playsFirst = playerOneName;
 var currentPlayer;
+var gamesPlayed = 1;
 var playerOneWins = 0;
 var playerTwoWins = 0;
-
-
-// if a player went first that means they are "X". if P1 went first that means P2 is "O"
-// 
-
-
+var boxPlayed = [];
 
 
 var checkTurn = function () {
@@ -51,29 +50,29 @@ var checkWinner = function(row, column){
 
     // Check the row
     var isWinner = true;
-    r = row; 
-    c = 0;
-    // debugger
-    while(c<COLS) {
-        if(board[r][c] != icon) {
+    
+    rowIndex = row; 
+    columnIndex = 0;
+    while(columnIndex < maxColumns) {
+        if(board[rowIndex][columnIndex] != icon) {
             isWinner = false;
             break;
         }
-        c++;
+        columnIndex++;
     }
     if(isWinner) {
         return true;
     }
     // Check the column
     isWinner = true;
-    r = 0; 
-    c = column;
-    while(r<ROWS) {
-        if(board[r][c] != icon) {
+    rowIndex = 0; 
+    columnIndex = column;
+    while(rowIndex < maxRows) {
+        if(board[rowIndex][columnIndex] != icon) {
             isWinner = false;
             break;
         }
-        r++;
+        rowIndex++;
     }
     if(isWinner) {
         return true;
@@ -81,62 +80,51 @@ var checkWinner = function(row, column){
     // check diagonals
     if (row == column) {
         isWinner = true;
-        r = 0;
-        c = 0;
-        while(r<ROWS) {
-            if(board[r][c] != icon) {
+        rowIndex = 0;
+        columnIndex = 0;
+        while(rowIndex < maxRows) {
+            if(board[rowIndex][columnIndex] != icon) {
                 isWinner = false;
                 break;
             }
-            r++
-            c++
+            rowIndex++
+            columnIndex++
         }
     }
     if(isWinner) {
         return true;
     }
-
-    // if (row == ROWS-column && column == COLS-row) {
+    // if (row == maxRows-column && column == maxColumns-row) {
     if(row == 2 && column == 0 || row == 1 && column == 1 || row == 0 && column == 2) {
-        // debugger
         isWinner = true;
-        r = ROWS-1;
-        c = 0;
-        while(c<COLS) {
-            if(board[r][c] != icon) {
+        rowIndex = maxRows-1;
+        columnIndex = 0;
+        while(columnIndex<maxColumns) {
+            if(board[rowIndex][columnIndex] != icon) {
                 isWinner = false;
                 break;
             }
-            r--
-            c++
+            rowIndex--
+            columnIndex++
         }
     }
-    
-    // debugger
-    return isWinner;
-    
+    return isWinner
 }
 
 var checkDraw = function () {
-    var drawGame = true
-    while (drawGame ) {
-        board.forEach(function(box){
-            if (box == false)
-            drawGame  = false;
-    })
+    if (boxPlayed.length === (maxColumns*maxRows)) {
+        return true
     }
-    return drawGame
 }
 
 var addIcon = function (event) {
-    // debugger
     var row = event.target.id.split('-')[1]
     var column = event.target.id.split('-')[2]
+    boxPlayed.push([row,column].join(","))
 
     if (event.target.classList.contains("O")===false && event.target.classList.contains("X")===false && !gameOver && playerTwoName !== "") {
         if (icon === "X") {
-            // debugger
-            icon = "O"; //currentPlayer
+            icon = "O"; 
             event.target.textContent = icon;
             event.target.classList.add('slide-in-right')
             event.target.classList.add('O')
@@ -145,38 +133,46 @@ var addIcon = function (event) {
         }
         else if (icon === "O"){
             icon = "X";
-            // debugger
             event.target.textContent = icon;
             event.target.classList.add('slide-in-left')
             event.target.classList.add('X')
             board[row][column] =  'X';
         }
-        var hasWon = checkWinner(row, column);
-        // if (!hasWon) {
-        //     checkDraw()
-        // }
-        // var drawGame = checkDraw()
+        hasWon = checkWinner(row, column);
+        isDraw = checkDraw()
+
         checkTurn(icon)
         promptBox.textContent = "It's " + currentPlayer + "'s turn"
-        // if(hasWon || drawGame) {
-        if(hasWon) {
+
+        if (hasWon) {
             gameOver = true;
-            promptBox.classList.add('win');
-            promptBox.classList.add('pulsate-fwd');
-            promptBox.textContent = "Player " + currentPlayer + " wins!!"
+            promptBox.textContent = currentPlayer + "wins!!"
+            promptBox.classList.add('win')
+            updateStats()
+        } else if (hasWon == false && isDraw){
+            gameOver = true;
+            promptBox.textContent = "Game is a draw"
             updateStats()
         }
+
     } 
 }
 
 var updateStats = function () {
     gamesPlayed++
-    if (currentPlayer == playerTwoName) {
-        playerOneWins++
-    } else {
-        playerTwoWins++
+    roundDisplay.textContent = gamesPlayed;
+    if (isDraw) {
+
     }
-}
+    else if (currentPlayer == playerOneName) {
+        playerOneWins++
+        playerOneScoreDisplay.textContent = playerOneWins;
+    } else if (currentPlayer == playerTwoName){
+        playerTwoWins++
+        playerTwoScoreDisplay.textContent = playerOneWins;
+    }
+} 
+
 
 var startGame = function () {
     startBtn.classList.add('hide')
@@ -190,13 +186,17 @@ var resetGame = function () {
         box.classList.remove("O");
         box.textContent = ""
     })
-    board = [
-        [false, false, false],
-        [false, false, false],
-        [false, false, false]
-    ];
+
+    for (var i = 0; i<maxColumns; i++) {
+        board[i]
+        for (var j=0; j<maxRows; j++) {
+            board[i][j] = false;
+        }
+    }
+
     promptBox.textContent = "";
     gameOver= false;
+    boxPlayed = []
     whoPlaysFirst()
 }
 
@@ -230,7 +230,6 @@ var whoPlaysFirst = function () {
         
 
 allBoxes.forEach(function (box){
-    // debugger
     box.addEventListener('click', addIcon)
 }) 
 
