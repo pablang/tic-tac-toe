@@ -50,8 +50,8 @@ var checkWinner = function(row, column){
 
     // Check the row
     var isWinner = true;
-    
-    rowIndex = row; 
+
+    rowIndex = row;
     columnIndex = 0;
     while(columnIndex < maxColumns) {
         if(board[rowIndex][columnIndex] != icon) {
@@ -65,7 +65,7 @@ var checkWinner = function(row, column){
     }
     // Check the column
     isWinner = true;
-    rowIndex = 0; 
+    rowIndex = 0;
     columnIndex = column;
     while(rowIndex < maxRows) {
         if(board[rowIndex][columnIndex] != icon) {
@@ -76,7 +76,7 @@ var checkWinner = function(row, column){
     }
     if(isWinner) {
         return true;
-    } 
+    }
     // check diagonals
     if (row == column) {
         isWinner = true;
@@ -94,8 +94,8 @@ var checkWinner = function(row, column){
     if(isWinner) {
         return true;
     }
-    // if (row == maxRows-column && column == maxColumns-row) {
-    if(row == 2 && column == 0 || row == 1 && column == 1 || row == 0 && column == 2) {
+
+    if (row == (maxRows-1)-column && column == (maxColumns-1)-row) {
         isWinner = true;
         rowIndex = maxRows-1;
         columnIndex = 0;
@@ -124,7 +124,7 @@ var addIcon = function (event) {
 
     if (event.target.classList.contains("O")===false && event.target.classList.contains("X")===false && !gameOver && playerTwoName !== "") {
         if (icon === "X") {
-            icon = "O"; 
+            icon = "O";
             event.target.textContent = icon;
             event.target.classList.add('slide-in-right')
             event.target.classList.add('O')
@@ -155,7 +155,7 @@ var addIcon = function (event) {
             updateStats()
         }
 
-    } 
+    }
 }
 
 var updateStats = function () {
@@ -171,7 +171,7 @@ var updateStats = function () {
         playerTwoWins++
         playerTwoScoreDisplay.textContent = playerOneWins;
     }
-} 
+}
 
 
 var startGame = function () {
@@ -227,11 +227,11 @@ var whoPlaysFirst = function () {
     }
     promptBox.textContent = "It's " + playsFirst + "'s turn"
 }
-        
+
 
 allBoxes.forEach(function (box){
     box.addEventListener('click', addIcon)
-}) 
+})
 
 startBtn.addEventListener('click', startGame)
 
