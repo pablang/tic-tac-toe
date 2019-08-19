@@ -146,7 +146,7 @@ var addIcon = function (event) {
 
         if (hasWon) {
             gameOver = true;
-            promptBox.textContent = currentPlayer + "wins!!"
+            promptBox.textContent = currentPlayer + " wins!!"
             promptBox.classList.add('win')
             updateStats()
         } else if (hasWon == false && isDraw){
