@@ -6,7 +6,7 @@ body {
     font-size: 12px;
     margin: auto;
 
-    
+
 }
 
 header.begin {
@@ -94,7 +94,7 @@ section.board {
 section[class*="row"] {
     display: flex;
     flex-direction: row;
-    margin: auto;
+    margin: 0;
     justify-content: center;
     width: 100%;
 
@@ -102,8 +102,8 @@ section[class*="row"] {
 
 div.box { /*the box conatining the icon */
     font-size: 16px;
-    width: 5rem;
-    height: 5rem;
+    width: 20vmin;
+    height: 20vmin;
     background-color: #c8c5e0;
     display: flex;
     justify-content: center;
@@ -178,7 +178,7 @@ h1 {
     font-size: 5rem;
     margin: 3rem 0 auto;
     text-shadow: black 1px 1px 2px;
-    
+
 }
 
 h2 {
@@ -219,7 +219,7 @@ p.score {
     animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation-duration: 0.4s;
     transition-timing-function: ease-in;
-    
+
 }
 
 @keyframes slide-in-left {
@@ -324,141 +324,11 @@ p.score {
     margin-top: 1rem;
 }
 
-/* @media (max-width: 600px) {
-    main {
-        width: 100%;
-    } 
+@media (max-width: 600px) {
+    #avatar-1, #avatar-2 {
+        width: 15vmin;
+        height: 15vmin;
+        padding: 0.5rem;
+    }
+}
 
-    header {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        text-align: center;
-    
-    }
-    
-    h1 {
-        color: white;
-        font-family: 'Luckiest Guy', sans-serif;
-        font-size: 6rem;
-        margin: 1rem auto;
-        text-shadow: black 1px 1px 2px;
-        
-    }
-    
-    h2 {
-        margin: 1rem auto;
-        font-family: 'Viga', sans-serif;
-        font-size: 2em;
-        color: #fbd052;
-        text-align: center;
-        background-color: #3f385a;
-    }
-    section.board {
-        font-size: 16px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        justify-content: center;
-    }
-    
-    section[class*="row"] {
-        display: flex;
-        flex-direction: row;
-        margin: auto;
-        justify-content: center;
-        width: 100%;
-    
-    }
-    
-    section div { 
-        width: 5em;
-        height: 5em;
-        background-color: #c8c5e0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    span {
-        width: 5em;
-        height: 5em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Permanent Marker', cursive;
-        font-size: 2rem;
-        font-weight: 900;
-    }
-}  
-
-@media (max-width: 350px) {
-    main {
-        width: 100%;
-    } 
-
-    header {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        text-align: center;
-    
-    }
-    
-    h1 {
-        color: white;
-        font-family: 'Luckiest Guy', sans-serif;
-        font-size: 1em;
-        margin: 0.5em auto;
-        text-shadow: black 1px 1px 2px;
-        
-    }
-    
-    h2 {
-        margin: 0.5em auto;
-        font-family: 'Viga', sans-serif;
-        font-size: 0.5em;
-        color: #fbd052;
-        text-align: center;
-        background-color: #3f385a;
-        width: 80%;
-    }
-    section.board {
-        font-size: 12px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        justify-content: center;
-    }
-    
-    section[class*="row"] {
-        display: flex;
-        flex-direction: row;
-        margin: auto;
-        justify-content: center;
-        width: 100%;
-    
-    }
-    
-    section div { 
-        width: 2em;
-        height: 2em;
-        background-color: #c8c5e0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    span {
-        width: 6em;
-        height: 6em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Permanent Marker', cursive;
-        font-size: 8rem;
-        font-weight: 900;
-    }
-} */
