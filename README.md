@@ -6,6 +6,9 @@ Play the game here
 
 https://pablang.github.io/tic-tac-toe/
 
+I have also re-created the game using React.
+See it here: https://pablang.github.io/React-tic-tac-toe/
+
 
 ## Technologies Used
 
